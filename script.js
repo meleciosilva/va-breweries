@@ -12,7 +12,7 @@ async function renderAllBreweries() {
 //renders one brewery listing
 function renderOneBrewery(listing) {
   const content = `
-  <div class='col-6 col-md-3 py-2'>
+  <div class='col-12 col-sm-6 col-md-4 col-lg-3 py-2'>
     <div class="card" style='height:100%'>
       <h5 class="card-header">${listing.name}</h5>
       <div class="card-body d-flex flex-column justify-content-between">
