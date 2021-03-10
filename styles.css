@@ -1,3 +1,11 @@
 .hidden {
   display:none;
 }
+
+.active-button {
+  background-color: #5cb85c;
+}
+
+.active-button:hover {
+  background-color: #4a9e4a;
+}
