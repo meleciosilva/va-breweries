@@ -167,7 +167,7 @@ function sortByType() {
 
 // ---------------------------------- MAIN ----------------------------------
 
-// renders all breweries, pagination buttons, and activates filterSearch function/event listener
+// renders breweries & pagination buttons and activates event listeners
 async function main() {
   renderBreweries((await allBreweries()), 1);
   addPagination(await allBreweries());
