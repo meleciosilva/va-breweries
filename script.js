@@ -1,8 +1,8 @@
 const breweries = document.querySelector('.breweries');
 const breweryListings = document.querySelector('.breweries').children;
 const paginationDiv = document.querySelector(".pagination-buttons");
+const dropdownMenu = document.querySelectorAll(".dropdown-item");
 const perPage = 8; // number of breweries to display per page
-
 
 async function allBreweries() {
   const results = await axios.get("https://api.openbrewerydb.org/breweries?by_state=virginia").then(({data}) => data);
@@ -30,7 +30,10 @@ function renderOneBrewery(listing) {
         <h6>Address:</h6>
         <p>${listing.street} ${listing.city}, ${listing.state}</p>
         <h6 id='type'>Type: ${listing.brewery_type.charAt(0).toUpperCase() + listing.brewery_type.slice(1)}</h6>
-        <a href="${listing.website_url}" target="_blank" class="btn btn-success">Visit Website</a>
+        <div class= d-flex>
+          <a href="${listing.website_url}" target="_blank" class="btn btn-success">Visit Website</a>
+          <a href="https://maps.google.com/?q=term${listing.street} ${listing.city} ${listing.state}" target="_blank" class="btn btn-success ml-3 px-3">Directions</a>
+        </div>
       </div>
     </div>
   </div>
@@ -63,7 +66,6 @@ function addPagination(list) {
       button.classList.add('active-button');
       // re-renders page with appropriate breweries
       breweries.innerHTML = '';
-      // renderBreweriesByPage(button.textContent);
       renderBreweries(list, button.textContent)
     })
   }
@@ -99,11 +101,24 @@ function filterSearch() {
   })
 }
 
+// sorts breweries by name
+function sortByName() {
+  const name = document.querySelector(".dropdown-item");
+  name.addEventListener(("click"), async () => {
+    const theBreweries = await allBreweries();
+    const pageNumber = document.querySelector(".active-button").textContent;
+    const listByName = theBreweries.sort((a, b) => a.name.localeCompare(b.name));
+    breweries.innerHTML = "";
+    renderBreweries(listByName, pageNumber);
+  })
+}
+
 // renders all breweries, pagination buttons, and activates filterSearch function/event listener
 async function main() {
   renderBreweries((await allBreweries()), 1);
   addPagination(await allBreweries());
   filterSearch();
+  sortByName();
 }
 
 // invokes main function upon DOM content loading
