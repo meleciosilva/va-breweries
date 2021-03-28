@@ -47,7 +47,7 @@ function renderOneBrewery(listing) {
 // ---------------------------------- Pagination Buttons ----------------------------------
 
 
-// adds pagination buttons to page and assigns event listners to each button
+// adds pagination buttons to page and assigns event listeners to each button
 function addPagination(list) {
   let totalButtons = Math.ceil(list.length / perPage); 
   paginationDiv.innerHTML = '';
