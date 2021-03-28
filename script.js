@@ -7,7 +7,8 @@ const perPage = 8; // number of breweries to display per page
 
 // retrieves data on all breweries in virginia
 async function allBreweries() {
-  const results = await axios.get("https://api.openbrewerydb.org/breweries?by_state=virginia").then(({data}) => data);
+  const response = await axios.get("https://api.openbrewerydb.org/breweries?by_state=virginia");
+  const results = response.data;
   return results;
 }
 
@@ -34,7 +35,7 @@ function renderOneBrewery(listing) {
         <h6 id='type'>Type: ${listing.brewery_type.charAt(0).toUpperCase() + listing.brewery_type.slice(1)}</h6>
         <div class= d-flex>
           <a href="${listing.website_url}" target="_blank" class="btn btn-success">Visit Website</a>
-          <a href="https://maps.google.com/?q=term${listing.street} ${listing.city} ${listing.state}" target="_blank" class="btn btn-success ml-3 px-3">Directions</a>
+          <a href="https://maps.google.com/?q=${listing.street} ${listing.city} ${listing.state}" target="_blank" class="btn btn-success ml-3 px-3">Directions</a>
         </div>
       </div>
     </div>
