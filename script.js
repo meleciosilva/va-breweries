@@ -26,16 +26,16 @@ function renderBreweries(list, page) {
 //renders one brewery listing
 function renderOneBrewery(listing) {
   const content = `
-  <div class='col-12 col-sm-6 col-md-4 col-lg-3 py-2'>
+  <div class='col-12 col-xs-12 col-md-6 col-lg-3 py-2'>
     <div class="card" style='height:100%'>
       <h5 class="card-header">${listing.name}</h5>
       <div class="card-body d-flex flex-column justify-content-between">
         <h6>Address:</h6>
         <p>${listing.street} ${listing.city}, ${listing.state}</p>
         <h6 id='type'>Type: ${listing.brewery_type.charAt(0).toUpperCase() + listing.brewery_type.slice(1)}</h6>
-        <div class= d-flex>
-          <a href="${listing.website_url}" target="_blank" class="btn btn-success">Visit Website</a>
-          <a href="https://maps.google.com/?q=${listing.street} ${listing.city} ${listing.state}" target="_blank" class="btn btn-success ml-3 px-3">Directions</a>
+        <div>
+          <a href="${listing.website_url}" target="_blank" class="btn btn-dark mt-1">Visit Website</a>
+          <a href="https://maps.google.com/?q=${listing.street} ${listing.city} ${listing.state}" target="_blank" class="btn btn-success mt-1">Directions</a>
         </div>
       </div>
     </div>
