@@ -60,7 +60,9 @@ function addPagination(list) {
   
   // assigns first button active class to indicate page 1 selected
   const firstButton = paginationDiv.firstElementChild;
-  firstButton.classList.add('active-button');
+  if (firstButton) {
+    firstButton.classList.add('active-button');
+  }
 
   handlePaginationButtons(list);
 
@@ -91,11 +93,17 @@ async function searchEntry(search) {
 
   // filters brewery listings based on search input and re-renders matches
   const filteredBreweries = (await allBreweries()).filter(brewery => {
+    
+    const name = brewery.name || "Not Available";
+    const street = brewery.street || 'Not Available';
+    const city = brewery.city || 'Not Available';
+    const brewery_type = brewery.brewery_type || 'Not Available';
+
     if (
-      brewery.name.toLowerCase().includes(searchLower) || 
-      brewery.street.toLowerCase().includes(searchLower) || 
-      brewery.city.toLowerCase().includes(searchLower) || 
-      brewery.brewery_type.toLowerCase().includes(searchLower)
+      name.toLowerCase().includes(searchLower) || 
+      street.toLowerCase().includes(searchLower) || 
+      city.toLowerCase().includes(searchLower) || 
+      brewery_type.toLowerCase().includes(searchLower)
     ) return brewery;
   })
   // removes listings and re-renders matches
