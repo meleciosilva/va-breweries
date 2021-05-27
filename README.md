@@ -2,7 +2,7 @@
 
 ## Link
 
-[VA Breweries Online](https://meleciosilva.github.io/va-breweries/)
+[VA Breweries Online](https://va-breweries.vercel.app/)
 
 ## Description
 
