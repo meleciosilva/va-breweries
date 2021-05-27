@@ -26,6 +26,7 @@ VA Breweries is a directory of breweries, cideries, and craft beer bottle shops 
 
 - Built using Bootstrap to create the layout, styling, and responsive design
 - Implemented Axios to send HTTP requests to the Open Brewery Database
+- Used DOM manipulation to customize event listeners and rendering
 
 ## API Documentation
 
